@@ -1,25 +1,23 @@
+
 module.exports = {
-  contentSource: {
-    type: 'CP',
-  },
   seo: {
-    title: "FastStore",
-    description: "A fast and performant store framework",
-    titleTemplate: "%s | FastStore",
-    author: "FastStore",
-  },
+  "title": "FastStore",
+  "description": "A fast and performant store framework",
+  "titleTemplate": "%s | FastStore",
+  "author": "FastStore"
+},
 
   // Theming
-  theme: "custom-theme",
+  theme: 'custom-theme',
 
   // Ecommerce Platform
-  platform: "vtex",
+  platform: 'vtex',
 
   // Platform specific configs for API
   api: {
-    storeId: "newstore",
-    workspace: "master",
-    environment: "vtexcommercestable",
+    storeId: process.env.NEXT_PUBLIC_STORE_ID || "masterclass",
+    workspace: 'master',
+    environment: 'vtexcommercestable',
     hideUnavailableItems: true,
     incrementAddress: false,
   },
@@ -31,7 +29,7 @@ module.exports = {
       symbol: "R$",
     },
     locale: "pt-BR",
-    channel: '{"salesChannel":"1","regionId":""}',
+    channel: '{"salesChannel":1,"regionId":""}',
     country: "BRA",
     deliveryMode: null,
     addressType: null,
@@ -41,62 +39,60 @@ module.exports = {
   },
 
   cart: {
-    id: "",
+    id: '',
     items: [],
     messages: [],
     shouldSplitItem: true,
   },
 
   // Production URLs
-  storeUrl: "https://www.fast.store",
-  secureSubdomain: "https://www.fast.store/",
-  checkoutUrl: "https://www.fast.store/checkout",
-  loginUrl: "https://www.fast.store/api/io/login",
-  accountUrl: "https://www.fast.store/api/io/account",
+  storeUrl: "https://masterclass.vtex.app",
+  secureSubdomain: "https://secure.vtexfaststore.com/",
+  checkoutUrl: "https://secure.vtexfaststore.com/checkout",
+  loginUrl: "https://secure.vtexfaststore.com/api/io/login",
+  accountUrl: "https://secure.vtexfaststore.com/api/io/account",
 
   previewRedirects: {
-    home: "/",
-    plp: "/headphones",
-    search: "/s?q=Newstore",
-    pdp: "/headphone-white-10000006/p",
+    home: '/',
+    plp: "/pet%20supplies",
+    search: "/s?q=TailTrail",
+    pdp: "/premium-birds-edition/p",
   },
 
   // Lighthouse CI
   lighthouse: {
-    server: process.env.BASE_SITE_URL || "http://localhost:3000",
+    server: process.env.BASE_SITE_URL || 'http://localhost:3000',
     pages: {
-      home: "/",
-      pdp: "/headphone-white-10000006/p",
-      collection: "/headphones",
+      home: '/',
+      pdp: "/premium-birds-edition/p",
+      collection: "/pet%20supplies",
     },
   },
 
   // E2E CI
   cypress: {
     pages: {
-      home: "/",
-      pdp: "/headphone-white-10000006/p",
-      collection: "/headphones",
-      collection_filtered:
-        "/headphones?category-1=headphones&fuzzy=0&operator=and&facets=category-1%2Cfuzzy%2Coperator&sort=score_desc&page=0",
-      search: "/s?q=Newstore",
+      home: '/',
+      pdp: "/premium-birds-edition/p",
+      collection: "/pet%20supplies",
+      collection_filtered: "/pet%20supplies/?category-1=pet%20supplies&brand=TailTrail&facets=category-1%2Cbrand%27",
+      search: "/s?q=TailTrail",
     },
-    browser: "electron",
+    browser: 'electron',
   },
 
   analytics: {
     // https://developers.google.com/tag-platform/tag-manager/web#standard_web_page_installation,
-    gtmContainerId: "GTM-1234567",
+    gtmContainerId: "",
   },
 
   experimental: {
-    nodeVersion: 24,
+    nodeVersion: 18,
     cypressVersion: 12,
-    enableFaststoreMyAccount: false,
-    optimizedFonts: true, 
   },
 
-  vtexHeadlessCms: {
-    webhookUrls: ["https://newstore.myvtex.com/cms-releases/webhook-releases"],
+  contentSource: {
+    type: 'CP',
+    project: "masterclass",
   },
-};
+}
