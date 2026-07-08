@@ -46,11 +46,11 @@ module.exports = {
   },
 
   // Production URLs
-  storeUrl: "https://masterclass.vtex.app",
-  secureSubdomain: "https://secure.vtexfaststore.com/",
-  checkoutUrl: "https://secure.vtexfaststore.com/checkout",
-  loginUrl: "https://secure.vtexfaststore.com/api/io/login",
-  accountUrl: "https://secure.vtexfaststore.com/api/io/account",
+  storeUrl: 'https://masterclass.vtex.app',
+  secureSubdomain: 'https://masterclass.vtex.app',
+  checkoutUrl: 'https://masterclass.vtex.app/checkout',
+  loginUrl: 'https://masterclass.vtex.app/api/io/login',
+  accountUrl: 'https://masterclass.vtex.app/api/io/account',
 
   previewRedirects: {
     home: '/',
