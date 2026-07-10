@@ -29,7 +29,7 @@ module.exports = {
       symbol: "R$",
     },
     locale: "pt-BR",
-    channel: '{"salesChannel":1,"regionId":""}',
+    channel: '{"salesChannel":"1","regionId":""}',
     country: "BRA",
     deliveryMode: null,
     addressType: null,
