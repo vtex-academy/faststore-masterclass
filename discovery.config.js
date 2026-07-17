@@ -95,4 +95,8 @@ module.exports = {
     type: 'CP',
     project: "masterclass",
   },
+
+  localization: {
+    enabled: true,
+  },
 }
