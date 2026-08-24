@@ -46,11 +46,11 @@ module.exports = {
   },
 
   // Production URLs
-  storeUrl: 'https://masterclass.vtex.app',
-  secureSubdomain: 'https://masterclass.vtex.app',
-  checkoutUrl: 'https://masterclass.vtex.app/checkout',
-  loginUrl: 'https://masterclass.vtex.app/api/io/login',
-  accountUrl: 'https://masterclass.vtex.app/api/io/account',
+  storeUrl: 'https://masterclass.b2cdemostore.com/',
+  secureSubdomain: 'https://masterclass.b2cdemostore.com',
+  checkoutUrl: 'https://masterclass.b2cdemostore.com/checkout',
+  loginUrl: 'https://masterclass.b2cdemostore.com/api/io/login',
+  accountUrl: 'https://masterclass.b2cdemostore.com/api/io/account',
 
   previewRedirects: {
     home: '/',
