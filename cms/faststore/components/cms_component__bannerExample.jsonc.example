@@ -1,0 +1,17 @@
+{
+  "$extends": [
+    "#/$defs/base-component"
+  ],
+  "$componentKey": "Banner example",
+  "$componentTitle": "Banner",
+  "type": "object",
+  "required": [
+    "section"
+  ],
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  }
+}
