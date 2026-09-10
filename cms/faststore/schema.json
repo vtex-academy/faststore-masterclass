@@ -1,0 +1,444 @@
+{
+  "$base": "vtex.faststore@4",
+  "components": {
+    "ProductShelf": {
+      "$extends": ["#/$defs/base-component"],
+      "$componentKey": "ProductShelf",
+      "$componentTitle": "Product Shelf",
+      "title": "Product Shelf",
+      "description": "Add custom shelves to your store",
+      "type": "object",
+      "required": ["title", "numberOfItems", "after", "sort"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "numberOfItems": {
+          "type": "integer",
+          "title": "Total number of items",
+          "default": 5,
+          "description": "Total number of items. The quantity may be smaller if the query returns fewer products."
+        },
+        "itemsPerPage": {
+          "type": "integer",
+          "title": "Number of items per page",
+          "default": 5,
+          "description": "Number of items to display per page in carousel"
+        },
+        "after": {
+          "type": "string",
+          "title": "After",
+          "default": "0",
+          "description": "Initial pagination item"
+        },
+        "sort": {
+          "title": "Sort",
+          "type": "string",
+          "description": "Items order",
+          "default": "score_desc",
+          "enum": [
+            "discount_desc",
+            "name_asc",
+            "name_desc",
+            "orders_desc",
+            "price_asc",
+            "price_desc",
+            "release_desc",
+            "score_desc"
+          ],
+          "enumNames": [
+            "Discount: higher to lower",
+            "Name: A-Z",
+            "Name: Z-A",
+            "Orders: higher to lower",
+            "Price: lower to higher",
+            "Price: higher to lower",
+            "Release date: newer to older",
+            "Relevance: higher to lower"
+          ]
+        },
+        "term": {
+          "type": "string",
+          "title": "Search term"
+        },
+        "selectedFacets": {
+          "title": "Facets",
+          "type": "array",
+          "items": {
+            "title": "Facet",
+            "type": "object",
+            "required": ["key", "value"],
+            "properties": {
+              "key": {
+                "title": "Key",
+                "description": "For collections use: productClusterIds",
+                "type": "string",
+                "default": "productClusterIds"
+              },
+              "value": {
+                "title": "Value",
+                "description": "E.g. For 'Most Wanted' collection, use: 140.",
+                "type": "string",
+                "default": "140"
+              }
+            }
+          }
+        },
+        "taxesConfiguration": {
+          "title": "Taxes Configuration",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Should use taxes to calculate the price?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Tax label to be displayed",
+              "type": "string",
+              "default": "Tax included"
+            }
+          }
+        },
+        "productCardConfiguration": {
+          "title": "Product Card Configuration",
+          "type": "object",
+          "properties": {
+            "showDiscountBadge": {
+              "title": "Show discount badge?",
+              "type": "boolean",
+              "default": true
+            },
+            "bordered": {
+              "title": "Cards should be bordered?",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "vtexAds": {
+          "title": "VTEX Ads",
+          "type": "object",
+          "required": ["responsive"],
+          "properties": {
+            "responsive": {
+              "title": "Configuração responsiva",
+              "description": "Ative e configure apenas na vitrine Mais Procurados.",
+              "type": "object",
+              "required": ["desktop", "mobile"],
+              "properties": {
+                "desktop": {
+                  "title": "Desktop",
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "title": "Ativar no desktop?",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "channel": {
+                      "title": "Canal",
+                      "type": "string",
+                      "enumNames": ["Site", "Mobile site", "App"],
+                      "enum": ["site", "msite", "app"],
+                      "default": "site"
+                    },
+                    "placementName": {
+                      "title": "Placement name",
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "title": "Quantidade de patrocinados",
+                      "description": "Os anúncios ocupam as primeiras posições. Limite deste placement: 2.",
+                      "type": "integer",
+                      "default": 2,
+                      "minimum": 1,
+                      "maximum": 2
+                    }
+                  }
+                },
+                "mobile": {
+                  "title": "Mobile",
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "title": "Ativar no mobile?",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "channel": {
+                      "title": "Canal",
+                      "type": "string",
+                      "enumNames": ["Site", "Mobile site", "App"],
+                      "enum": ["site", "msite", "app"],
+                      "default": "msite"
+                    },
+                    "placementName": {
+                      "title": "Placement name",
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "title": "Quantidade de patrocinados",
+                      "description": "Os anúncios ocupam as primeiras posições. Limite deste placement: 2.",
+                      "type": "integer",
+                      "default": 2,
+                      "minimum": 1,
+                      "maximum": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "VtexAdsBanner": {
+      "$extends": ["#/$defs/base-component"],
+      "$componentKey": "VtexAdsBanner",
+      "$componentTitle": "VTEX Ads Banner",
+      "requiredScopes": ["home"],
+      "title": "VTEX Ads Banner",
+      "description": "Exibe um banner do VTEX Ads com configurações independentes para desktop e mobile.",
+      "type": "object",
+      "required": ["responsive"],
+      "properties": {
+        "responsive": {
+          "title": "Configuração responsiva",
+          "type": "object",
+          "required": ["desktop", "mobile"],
+          "properties": {
+            "desktop": {
+              "title": "Desktop",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Ativar no desktop?",
+                  "type": "boolean",
+                  "default": true
+                },
+                "channel": {
+                  "title": "Canal",
+                  "type": "string",
+                  "enumNames": ["Site", "Mobile site", "App"],
+                  "enum": ["site", "msite", "app"],
+                  "default": "site"
+                },
+                "placementName": {
+                  "title": "Placement name",
+                  "type": "string"
+                },
+                "quantity": {
+                  "title": "Quantidade",
+                  "type": "integer",
+                  "default": 1,
+                  "minimum": 1
+                },
+                "size": {
+                  "title": "Tamanho da mídia",
+                  "type": "string",
+                  "enumNames": ["Desktop", "Mobile"],
+                  "enum": ["desktop", "mobile"],
+                  "default": "desktop"
+                }
+              }
+            },
+            "mobile": {
+              "title": "Mobile",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Ativar no mobile?",
+                  "type": "boolean",
+                  "default": true
+                },
+                "channel": {
+                  "title": "Canal",
+                  "type": "string",
+                  "enumNames": ["Site", "Mobile site", "App"],
+                  "enum": ["site", "msite", "app"],
+                  "default": "msite"
+                },
+                "placementName": {
+                  "title": "Placement name",
+                  "type": "string"
+                },
+                "quantity": {
+                  "title": "Quantidade",
+                  "type": "integer",
+                  "default": 1,
+                  "minimum": 1
+                },
+                "size": {
+                  "title": "Tamanho da mídia",
+                  "type": "string",
+                  "enumNames": ["Desktop", "Mobile"],
+                  "enum": ["desktop", "mobile"],
+                  "default": "mobile"
+                }
+              }
+            }
+          }
+        },
+        "altText": {
+          "title": "Texto alternativo",
+          "type": "string",
+          "default": "Publicidade patrocinada"
+        },
+        "viewThreshold": {
+          "title": "Percentual visível para view",
+          "description": "Valor entre 0 e 1. Confirme a política do placement antes do go-live.",
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0,
+          "maximum": 1
+        },
+        "viewTimeMs": {
+          "title": "Tempo visível para view (ms)",
+          "description": "Confirme a política do placement antes do go-live.",
+          "type": "integer",
+          "default": 1000,
+          "minimum": 0
+        }
+      }
+    },
+    "VtexAdsVideo": {
+      "$extends": ["#/$defs/base-component"],
+      "$componentKey": "VtexAdsVideo",
+      "$componentTitle": "VTEX Ads Video",
+      "requiredScopes": ["home"],
+      "title": "VTEX Ads Video",
+      "description": "Exibe um vídeo do VTEX Ads com configurações independentes para desktop e mobile.",
+      "type": "object",
+      "required": ["responsive"],
+      "properties": {
+        "responsive": {
+          "title": "Configuração responsiva",
+          "type": "object",
+          "required": ["desktop", "mobile"],
+          "properties": {
+            "desktop": {
+              "title": "Desktop",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Ativar no desktop?",
+                  "type": "boolean",
+                  "default": true
+                },
+                "channel": {
+                  "title": "Canal",
+                  "type": "string",
+                  "enumNames": ["Site", "Mobile site", "App"],
+                  "enum": ["site", "msite", "app"],
+                  "default": "site"
+                },
+                "placementName": {
+                  "title": "Placement name",
+                  "type": "string"
+                },
+                "quantity": {
+                  "title": "Quantidade",
+                  "type": "integer",
+                  "default": 1,
+                  "minimum": 1
+                },
+                "size": {
+                  "title": "Resolução da mídia",
+                  "type": "string",
+                  "enumNames": ["1080p", "720p", "480p", "360p", "320p"],
+                  "enum": ["1080p", "720p", "480p", "360p", "320p"],
+                  "default": "720p"
+                }
+              }
+            },
+            "mobile": {
+              "title": "Mobile",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "title": "Ativar no mobile?",
+                  "type": "boolean",
+                  "default": true
+                },
+                "channel": {
+                  "title": "Canal",
+                  "type": "string",
+                  "enumNames": ["Site", "Mobile site", "App"],
+                  "enum": ["site", "msite", "app"],
+                  "default": "msite"
+                },
+                "placementName": {
+                  "title": "Placement name",
+                  "type": "string"
+                },
+                "quantity": {
+                  "title": "Quantidade",
+                  "type": "integer",
+                  "default": 1,
+                  "minimum": 1
+                },
+                "size": {
+                  "title": "Resolução da mídia",
+                  "type": "string",
+                  "enumNames": ["1080p", "720p", "480p", "360p", "320p"],
+                  "enum": ["1080p", "720p", "480p", "360p", "320p"],
+                  "default": "360p"
+                }
+              }
+            }
+          }
+        },
+        "ariaLabel": {
+          "title": "Rótulo acessível",
+          "type": "string",
+          "default": "Vídeo patrocinado"
+        },
+        "autoPlay": {
+          "title": "Reproduzir automaticamente?",
+          "type": "boolean",
+          "default": false
+        },
+        "controls": {
+          "title": "Exibir controles?",
+          "type": "boolean",
+          "default": true
+        },
+        "loop": {
+          "title": "Repetir vídeo?",
+          "type": "boolean",
+          "default": false
+        },
+        "muted": {
+          "title": "Iniciar sem áudio?",
+          "type": "boolean",
+          "default": true
+        },
+        "destinationLabel": {
+          "title": "Texto do link do anúncio",
+          "description": "Exibido somente quando a campanha retorna uma URL de destino.",
+          "type": "string",
+          "default": "Saiba mais"
+        },
+        "viewThreshold": {
+          "title": "Percentual visível para view",
+          "description": "Valor entre 0 e 1. Confirme a política do placement antes do go-live.",
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0,
+          "maximum": 1
+        },
+        "viewTimeMs": {
+          "title": "Tempo visível para view (ms)",
+          "description": "Confirme a política do placement antes do go-live.",
+          "type": "integer",
+          "default": 1000,
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "$defs": {},
+  "content-types": {}
+}

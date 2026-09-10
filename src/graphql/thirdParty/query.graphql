@@ -1,0 +1,76 @@
+enum VtexAdsChannel {
+  site
+  msite
+  app
+}
+
+enum VtexAdsContext {
+  home
+  category
+  search
+  product_page
+  brand_page
+  digital_signage
+}
+
+enum VtexAdsType {
+  product
+  banner
+  sponsored_brand
+  digital_signage
+}
+
+enum VtexAdsAssetType {
+  image
+  video
+}
+
+input VtexAdsPlacementInput {
+  name: String!
+  quantity: Int!
+  type: VtexAdsType!
+  size: String
+  assetType: VtexAdsAssetType
+}
+
+input VtexAdsRequestInput {
+  sessionId: String!
+  userId: String
+  channel: VtexAdsChannel!
+  context: VtexAdsContext!
+  placement: VtexAdsPlacementInput!
+}
+
+type VtexAdsAd {
+  type: VtexAdsType!
+  adId: String!
+  productSku: String
+  sellerId: String
+  mediaUrl: String
+  destinationUrl: String
+  impressionUrl: String
+  viewUrl: String
+  clickUrl: String
+}
+
+type VtexAdsPlacementResult {
+  placement: String!
+  ads: [VtexAdsAd!]!
+}
+
+type VtexAdsProductItem {
+  ad: VtexAdsAd!
+  product: StoreProduct!
+}
+
+type VtexAdsProductResult {
+  placement: String!
+  items: [VtexAdsProductItem!]!
+}
+
+extend type Query {
+  vtexAds(input: VtexAdsRequestInput!): VtexAdsPlacementResult!
+    @cacheControl(scope: "private", sMaxAge: 0, staleWhileRevalidate: 0)
+  vtexAdsProducts(input: VtexAdsRequestInput!): VtexAdsProductResult!
+    @cacheControl(scope: "private", sMaxAge: 0, staleWhileRevalidate: 0)
+}

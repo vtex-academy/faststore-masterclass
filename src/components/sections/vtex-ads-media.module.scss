@@ -1,0 +1,30 @@
+@layer components {
+  .mediaSection {
+    [data-vtex-ads-container] {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .creativeLink {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .videoDestination {
+      display: inline-flex;
+      margin-top: var(--fs-spacing-2);
+      color: currentColor;
+      font-weight: var(--fs-text-weight-semibold);
+      text-decoration: underline;
+    }
+
+    .image,
+    .video {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}

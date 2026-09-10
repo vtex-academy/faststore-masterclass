@@ -1,0 +1,9 @@
+@layer components {
+  .sponsoredCard {
+    height: 100%;
+
+    > [data-fs-product-card] {
+      height: 100%;
+    }
+  }
+}

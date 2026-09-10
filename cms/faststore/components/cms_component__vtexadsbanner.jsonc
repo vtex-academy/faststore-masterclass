@@ -1,0 +1,109 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "VtexAdsBanner",
+  "$componentTitle": "VTEX Ads Banner",
+  "requiredScopes": ["home"],
+  "title": "VTEX Ads Banner",
+  "description": "Exibe um banner do VTEX Ads com configurações independentes para desktop e mobile.",
+  "type": "object",
+  "required": ["responsive"],
+  "properties": {
+    "responsive": {
+      "title": "Configuração responsiva",
+      "type": "object",
+      "required": ["desktop", "mobile"],
+      "properties": {
+        "desktop": {
+          "title": "Desktop",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Ativar no desktop?",
+              "type": "boolean",
+              "default": true,
+            },
+            "channel": {
+              "title": "Canal",
+              "type": "string",
+              "enumNames": ["Site", "Mobile site", "App"],
+              "enum": ["site", "msite", "app"],
+              "default": "site",
+            },
+            "placementName": {
+              "title": "Placement name",
+              "type": "string",
+            },
+            "quantity": {
+              "title": "Quantidade",
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+            },
+            "size": {
+              "title": "Tamanho da mídia",
+              "type": "string",
+              "enumNames": ["Desktop", "Mobile"],
+              "enum": ["desktop", "mobile"],
+              "default": "desktop",
+            },
+          },
+        },
+        "mobile": {
+          "title": "Mobile",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Ativar no mobile?",
+              "type": "boolean",
+              "default": true,
+            },
+            "channel": {
+              "title": "Canal",
+              "type": "string",
+              "enumNames": ["Site", "Mobile site", "App"],
+              "enum": ["site", "msite", "app"],
+              "default": "msite",
+            },
+            "placementName": {
+              "title": "Placement name",
+              "type": "string",
+            },
+            "quantity": {
+              "title": "Quantidade",
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+            },
+            "size": {
+              "title": "Tamanho da mídia",
+              "type": "string",
+              "enumNames": ["Desktop", "Mobile"],
+              "enum": ["desktop", "mobile"],
+              "default": "mobile",
+            },
+          },
+        },
+      },
+    },
+    "altText": {
+      "title": "Texto alternativo",
+      "type": "string",
+      "default": "Publicidade patrocinada",
+    },
+    "viewThreshold": {
+      "title": "Percentual visível para view",
+      "description": "Valor entre 0 e 1. Confirme a política do placement antes do go-live.",
+      "type": "number",
+      "default": 0.5,
+      "minimum": 0,
+      "maximum": 1,
+    },
+    "viewTimeMs": {
+      "title": "Tempo visível para view (ms)",
+      "description": "Confirme a política do placement antes do go-live.",
+      "type": "integer",
+      "default": 1000,
+      "minimum": 0,
+    },
+  },
+}

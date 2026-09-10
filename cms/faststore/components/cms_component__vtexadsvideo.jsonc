@@ -1,0 +1,135 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "VtexAdsVideo",
+  "$componentTitle": "VTEX Ads Video",
+  "requiredScopes": ["home"],
+  "title": "VTEX Ads Video",
+  "description": "Exibe um vídeo do VTEX Ads com configurações independentes para desktop e mobile.",
+  "type": "object",
+  "required": ["responsive"],
+  "properties": {
+    "responsive": {
+      "title": "Configuração responsiva",
+      "type": "object",
+      "required": ["desktop", "mobile"],
+      "properties": {
+        "desktop": {
+          "title": "Desktop",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Ativar no desktop?",
+              "type": "boolean",
+              "default": true,
+            },
+            "channel": {
+              "title": "Canal",
+              "type": "string",
+              "enumNames": ["Site", "Mobile site", "App"],
+              "enum": ["site", "msite", "app"],
+              "default": "site",
+            },
+            "placementName": {
+              "title": "Placement name",
+              "type": "string",
+            },
+            "quantity": {
+              "title": "Quantidade",
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+            },
+            "size": {
+              "title": "Resolução da mídia",
+              "type": "string",
+              "enumNames": ["1080p", "720p", "480p", "360p", "320p"],
+              "enum": ["1080p", "720p", "480p", "360p", "320p"],
+              "default": "720p",
+            },
+          },
+        },
+        "mobile": {
+          "title": "Mobile",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Ativar no mobile?",
+              "type": "boolean",
+              "default": true,
+            },
+            "channel": {
+              "title": "Canal",
+              "type": "string",
+              "enumNames": ["Site", "Mobile site", "App"],
+              "enum": ["site", "msite", "app"],
+              "default": "msite",
+            },
+            "placementName": {
+              "title": "Placement name",
+              "type": "string",
+            },
+            "quantity": {
+              "title": "Quantidade",
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+            },
+            "size": {
+              "title": "Resolução da mídia",
+              "type": "string",
+              "enumNames": ["1080p", "720p", "480p", "360p", "320p"],
+              "enum": ["1080p", "720p", "480p", "360p", "320p"],
+              "default": "360p",
+            },
+          },
+        },
+      },
+    },
+    "ariaLabel": {
+      "title": "Rótulo acessível",
+      "type": "string",
+      "default": "Vídeo patrocinado",
+    },
+    "autoPlay": {
+      "title": "Reproduzir automaticamente?",
+      "type": "boolean",
+      "default": false,
+    },
+    "controls": {
+      "title": "Exibir controles?",
+      "type": "boolean",
+      "default": true,
+    },
+    "loop": {
+      "title": "Repetir vídeo?",
+      "type": "boolean",
+      "default": false,
+    },
+    "muted": {
+      "title": "Iniciar sem áudio?",
+      "type": "boolean",
+      "default": true,
+    },
+    "destinationLabel": {
+      "title": "Texto do link do anúncio",
+      "description": "Exibido somente quando a campanha retorna uma URL de destino.",
+      "type": "string",
+      "default": "Saiba mais",
+    },
+    "viewThreshold": {
+      "title": "Percentual visível para view",
+      "description": "Valor entre 0 e 1. Confirme a política do placement antes do go-live.",
+      "type": "number",
+      "default": 0.5,
+      "minimum": 0,
+      "maximum": 1,
+    },
+    "viewTimeMs": {
+      "title": "Tempo visível para view (ms)",
+      "description": "Confirme a política do placement antes do go-live.",
+      "type": "integer",
+      "default": 1000,
+      "minimum": 0,
+    },
+  },
+}
