@@ -52,6 +52,7 @@ function TrackedSponsoredProduct({
     ad: {
       adId: ad.adId,
       impressionUrl: ad.impressionUrl,
+      viewUrl: ad.viewUrl,
       clickUrl: ad.clickUrl,
     },
     placementName,
