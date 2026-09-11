@@ -1,0 +1,13 @@
+type CollectionShelfProduct {
+  id: String!
+  name: String!
+  slug: String!
+  imageUrl: String!
+  imageAlt: String!
+  price: Float!
+  listPrice: Float!
+}
+
+extend type Query {
+  collectionShelfProducts(collectionId: String!, first: Int): [CollectionShelfProduct!]!
+}

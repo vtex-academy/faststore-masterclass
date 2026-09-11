@@ -1,0 +1,161 @@
+{
+  "$base": "vtex.faststore@4",
+  "components": {
+    "CollectionsTabs": {
+      "$extends": [
+        "#/$defs/base-component"
+      ],
+      "$componentKey": "CollectionsTabs",
+      "$componentTitle": "Collections Tabs",
+      "title": "Collections Tabs",
+      "description": "Square collection buttons with a single-product carousel for the selected collection",
+      "type": "object",
+      "required": [
+        "title",
+        "buttons"
+      ],
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "background": {
+          "title": "Background",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Background type",
+              "type": "string",
+              "enum": [
+                "image",
+                "color"
+              ],
+              "enumNames": [
+                "Image",
+                "Hex Color"
+              ],
+              "default": "color"
+            },
+            "image": {
+              "title": "Background Image",
+              "type": "object",
+              "properties": {
+                "src": {
+                  "title": "Image",
+                  "type": "string",
+                  "widget": {
+                    "ui:widget": "media-gallery",
+                    "restrictMediaTypes": {
+                      "video": true,
+                      "image": [
+                        "png",
+                        "jpg",
+                        "jpeg",
+                        "gif",
+                        "svg",
+                        "webp"
+                      ]
+                    }
+                  }
+                },
+                "alt": {
+                  "title": "Alternative Label",
+                  "type": "string"
+                }
+              }
+            },
+            "hexColor": {
+              "title": "Hex Color",
+              "type": "string",
+              "default": "#fff9f5"
+            }
+          }
+        },
+        "seeAllLabel": {
+          "title": "See all label",
+          "type": "string",
+          "default": "Ver todos"
+        },
+        "plpBasePath": {
+          "title": "PLP base path",
+          "type": "string",
+          "description": "Path of the collection PLP page. The selected collection ID is appended as a query parameter",
+          "default": "/colecao"
+        },
+        "buttons": {
+          "title": "Collection Buttons",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "title": "Button",
+            "type": "object",
+            "required": [
+              "label",
+              "collectionId"
+            ],
+            "properties": {
+              "label": {
+                "title": "Collection name",
+                "type": "string"
+              },
+              "backgroundType": {
+                "title": "Swatch type",
+                "type": "string",
+                "enum": [
+                  "image",
+                  "color"
+                ],
+                "enumNames": [
+                  "Image",
+                  "Hex Color"
+                ],
+                "default": "color"
+              },
+              "image": {
+                "title": "Swatch Image",
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "title": "Image",
+                    "type": "string",
+                    "widget": {
+                      "ui:widget": "media-gallery",
+                      "restrictMediaTypes": {
+                        "video": true,
+                        "image": [
+                          "png",
+                          "jpg",
+                          "jpeg",
+                          "gif",
+                          "svg",
+                          "webp"
+                        ]
+                      }
+                    }
+                  },
+                  "alt": {
+                    "title": "Alternative Label",
+                    "type": "string"
+                  }
+                }
+              },
+              "hexColor": {
+                "title": "Hex Color",
+                "type": "string",
+                "default": "#f0ede8"
+              },
+              "collectionId": {
+                "title": "Collection ID",
+                "type": "string",
+                "description": "VTEX Collection/Cluster ID"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {},
+  "content-types": {}
+}
