@@ -1,0 +1,76 @@
+@use "@faststore/ui/src/styles/base/utilities" as u;
+
+@layer components {
+  .promoBanner {
+    @import "@faststore/ui/src/components/atoms/Button/styles.scss";
+    @import "@faststore/ui/src/components/molecules/LinkButton/styles.scss";
+
+    [data-fs-promo-banner-content] {
+      display: grid;
+      gap: var(--fs-spacing-5);
+      align-items: center;
+      padding: var(--fs-spacing-6) 0;
+    }
+
+    [data-fs-promo-banner-copy] {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--fs-spacing-3);
+    }
+
+    [data-fs-promo-banner-title] {
+      margin: 0;
+      color: var(--fs-color-text-display);
+      font-size: var(--fs-text-size-6);
+      font-weight: var(--fs-text-weight-bold);
+    }
+
+    [data-fs-promo-banner-subtitle] {
+      margin: 0;
+      color: var(--fs-color-text);
+      font-size: var(--fs-text-size-2);
+    }
+
+    [data-fs-promo-banner-media] {
+      overflow: hidden;
+      border-radius: var(--fs-border-radius);
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    &[data-fs-promo-banner-color-variant="main"] {
+      background-color: var(--fs-color-neutral-1);
+    }
+
+    &[data-fs-promo-banner-color-variant="light"] {
+      background-color: var(--fs-color-neutral-0);
+    }
+
+    &[data-fs-promo-banner-color-variant="accent"] {
+      background-color: var(--fs-color-main-2);
+
+      [data-fs-promo-banner-title],
+      [data-fs-promo-banner-subtitle] {
+        color: var(--fs-color-text-inverse);
+      }
+    }
+
+    @include u.media(">=notebook") {
+      [data-fs-promo-banner-content] {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: var(--fs-spacing-7);
+        padding: var(--fs-spacing-8) 0;
+      }
+
+      [data-fs-promo-banner-title] {
+        font-size: var(--fs-text-size-title-huge);
+      }
+    }
+  }
+}

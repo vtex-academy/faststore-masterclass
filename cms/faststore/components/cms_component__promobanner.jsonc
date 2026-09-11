@@ -1,0 +1,72 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "PromoBanner",
+  "$componentTitle": "Promo Banner",
+  "title": "Promo Banner",
+  "description": "Promotional banner with title, image and call to action, editable in the CMS preview",
+  "type": "object",
+  "required": ["title"],
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "default": "New arrivals for your pet"
+    },
+    "subtitle": {
+      "title": "Subtitle",
+      "type": "string",
+      "default": "Discover toys, food and accessories curated for this week."
+    },
+    "image": {
+      "title": "Image",
+      "type": "object",
+      "properties": {
+        "src": {
+          "title": "Image",
+          "type": "string",
+          "widget": {
+            "ui:widget": "media-gallery",
+            "restrictMediaTypes": {
+              "video": true,
+              "image": ["png", "jpg", "jpeg", "gif", "svg", "webp"]
+            }
+          }
+        },
+        "alt": {
+          "title": "Alternative Label",
+          "type": "string",
+          "default": "Promotional banner"
+        }
+      }
+    },
+    "link": {
+      "title": "Call to Action",
+      "type": "object",
+      "required": ["text", "url"],
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string",
+          "default": "Shop now"
+        },
+        "url": {
+          "title": "URL",
+          "type": "string",
+          "default": "/"
+        },
+        "linkTargetBlank": {
+          "title": "Open link in new window?",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "colorVariant": {
+      "title": "Color variant",
+      "type": "string",
+      "enumNames": ["Main", "Light", "Accent"],
+      "enum": ["main", "light", "accent"],
+      "default": "main"
+    }
+  }
+}
