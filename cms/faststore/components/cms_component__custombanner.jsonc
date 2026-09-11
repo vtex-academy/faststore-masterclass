@@ -1,0 +1,71 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "CustomBanner",
+  "$componentTitle": "Custom Banner",
+  "title": "Custom Banner",
+  "description": "Banner promocional com título, imagem e call to action",
+  "type": "object",
+  "required": ["title"],
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "default": "Promoção especial"
+    },
+    "subtitle": {
+      "title": "Subtitle",
+      "type": "string",
+      "default": "Confira as ofertas da semana"
+    },
+    "image": {
+      "title": "Image",
+      "type": "object",
+      "properties": {
+        "src": {
+          "title": "Image",
+          "type": "string",
+          "widget": {
+            "ui:widget": "media-gallery",
+            "restrictMediaTypes": {
+              "video": true,
+              "image": ["png", "jpg", "jpeg", "gif", "svg", "webp"]
+            }
+          }
+        },
+        "alt": {
+          "title": "Alternative Label",
+          "type": "string"
+        }
+      }
+    },
+    "link": {
+      "title": "Call to Action",
+      "type": "object",
+      "required": ["text", "url"],
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string",
+          "default": "Ver ofertas"
+        },
+        "url": {
+          "title": "URL",
+          "type": "string",
+          "default": "/"
+        },
+        "linkTargetBlank": {
+          "title": "Open link in new window?",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "colorVariant": {
+      "title": "Color variant",
+      "type": "string",
+      "enumNames": ["Main", "Light", "Accent"],
+      "enum": ["main", "light", "accent"],
+      "default": "main"
+    }
+  }
+}

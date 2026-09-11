@@ -148,6 +148,7 @@ Run `yarn cms-sync` to push local content type definitions to the VTEX Admin. Th
 
 
 ## Available Skills
-- [FastStore Storefront — Coding Rules](https://github.com/vtex/skills/blob/main/skills/faststore-storefront/SKILL.md)
+- [FastStore Storefront — Coding Rules](.cursor/skills/faststore-storefront/SKILL.md)
 
 > Only use this skill after check if `contentSource` type in `discovery.config.js` is CP.
+> Upstream: https://github.com/vtex/skills/tree/main/skills/faststore-storefront
