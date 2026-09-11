@@ -4,6 +4,26 @@
 
     > [data-fs-product-card] {
       height: 100%;
+
+      [data-fs-product-card-sponsored-label] {
+        position: absolute;
+        top: var(--fs-spacing-1);
+        right: var(--fs-spacing-1);
+        z-index: var(--fs-z-index-top);
+        display: inline-flex;
+        align-items: center;
+        min-height: 1.5rem;
+        padding: var(--fs-spacing-0) var(--fs-spacing-1);
+        font-weight: var(--fs-text-weight-semibold);
+        line-height: 1;
+        color: var(--fs-color-text);
+        white-space: nowrap;
+        pointer-events: none;
+        background-color: rgb(255 255 255 / 92%);
+        border: var(--fs-border-width) solid var(--fs-border-color-light);
+        border-radius: 9999px;
+        box-shadow: var(--fs-shadow);
+      }
     }
   }
 }
