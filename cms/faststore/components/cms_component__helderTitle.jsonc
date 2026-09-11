@@ -1,0 +1,15 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "HelderTitle",
+  "$componentTitle": "Helder Title",
+  "title": "Helder Title",
+  "description": "Simple section to display a title text",
+  "type": "object",
+  "required": ["text"],
+  "properties": {
+    "text": {
+      "title": "Text",
+      "type": "string"
+    }
+  }
+}
