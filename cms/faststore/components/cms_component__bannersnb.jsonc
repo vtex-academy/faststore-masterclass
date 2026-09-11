@@ -1,0 +1,80 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "BannerSnb",
+  "$componentTitle": "Banner SNB",
+  "title": "Banner SNB",
+  "description": "Banner com título e descrição obrigatórios e upload de imagens",
+  "type": "object",
+  "required": ["title", "description"],
+  "properties": {
+    "title": {
+      "title": "Título",
+      "type": "string",
+      "description": "Título principal do banner (obrigatório)"
+    },
+    "description": {
+      "title": "Descrição",
+      "type": "string",
+      "description": "Texto de apoio do banner (obrigatório)"
+    },
+    "images": {
+      "title": "Imagens",
+      "type": "array",
+      "description": "Imagens exibidas no banner",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "title": "Imagem",
+        "type": "object",
+        "required": ["src"],
+        "properties": {
+          "src": {
+            "title": "Imagem",
+            "type": "string",
+            "widget": {
+              "ui:widget": "media-gallery",
+              "restrictMediaTypes": {
+                "video": true,
+                "image": ["png", "jpg", "jpeg", "gif", "svg", "webp"]
+              }
+            }
+          },
+          "alt": {
+            "title": "Texto alternativo",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "link": {
+      "title": "Call to Action",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string"
+        },
+        "url": {
+          "title": "URL",
+          "type": "string"
+        },
+        "linkTargetBlank": {
+          "title": "Abrir link em nova janela?",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "colorVariant": {
+      "title": "Variante de cor",
+      "type": "string",
+      "enumNames": ["Main", "Light", "Accent"],
+      "enum": ["main", "light", "accent"],
+      "default": "main"
+    }
+  },
+  "readOnly": false,
+  "writeOnly": false,
+  "deprecated": false,
+  "$abstract": false
+}
