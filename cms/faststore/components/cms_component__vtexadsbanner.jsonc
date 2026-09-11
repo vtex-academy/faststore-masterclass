@@ -41,10 +41,8 @@
             },
             "size": {
               "title": "Tamanho da mídia",
+              "description": "Informe exatamente o valor de size configurado no placement do VTEX Ads.",
               "type": "string",
-              "enumNames": ["Desktop", "Mobile"],
-              "enum": ["desktop", "mobile"],
-              "default": "desktop",
             },
           },
         },
@@ -76,10 +74,8 @@
             },
             "size": {
               "title": "Tamanho da mídia",
+              "description": "Informe exatamente o valor de size configurado no placement do VTEX Ads.",
               "type": "string",
-              "enumNames": ["Desktop", "Mobile"],
-              "enum": ["desktop", "mobile"],
-              "default": "mobile",
             },
           },
         },
